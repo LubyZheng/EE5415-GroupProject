@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">EE5415-GroupProject</string>
+    <string name="app_name">DailyMessageTool</string>
+    <string name="textView1">Email Account</string>
+    <string name="textView2">Email IMAP Password</string>
+    <string name="Button">submit</string>
+
 </resources>
