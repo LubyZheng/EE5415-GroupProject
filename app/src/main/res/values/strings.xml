@@ -3,5 +3,6 @@
     <string name="textView1">Email Account</string>
     <string name="textView2">Email IMAP Password</string>
     <string name="Button">submit</string>
+    <string name="warning">Account/Password cannot be empty!</string>
 
 </resources>
