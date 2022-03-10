@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 String pw = password.getText().toString();
                 //json array
                 if(acc.equals("")||(pw.equals(""))){
-                    Toast.makeText(MainActivity.this,R.string.warning,Toast.LENGTH_LONG);
+                    Toast.makeText(MainActivity.this,R.string.warning,Toast.LENGTH_LONG).show();
                 }else {
                     Intent intent = new Intent(getApplicationContext(),
                             MainActivity.class);//need to be changed
