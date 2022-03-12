@@ -9,9 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,9 +34,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,R.string.warning,Toast.LENGTH_LONG).show();
                 }else {
                     Intent intent = new Intent(getApplicationContext(),
-                            MainActivity.class);//need to be changed
+                            HomepageActivity.class);
+                    JSONObject ac=new JSONObject();
+                    ac.put("emailAccount",acc);
+                    ac.put("emailImapPassword",pw);
                     startActivity(intent);
                 }
             }
+
         });
     } }

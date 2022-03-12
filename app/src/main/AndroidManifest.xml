@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EE5415GroupProject">
         <activity
+            android:name=".VersionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomepageActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
