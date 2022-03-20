@@ -10,7 +10,8 @@ import android.widget.Button;
 import org.json.JSONObject;
 
 public class HomepageActivity extends AppCompatActivity {
-    Button ver;// will be changed
+    Button ver;
+    Button contact;// will be changed
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,12 +23,17 @@ public class HomepageActivity extends AppCompatActivity {
                         VersionActivity.class);
                 startActivity(intent);
             }
-        }
+        });
+                contact.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(),
+                                contact.class);
+                        startActivity(intent);
+                    }
+                });
 
     }
 
 }
-    JSONObject ac=new JSONObject();
-                    ac.put("emailAccount",acc);
-                    ac.put("emailImapPassword",pw);
-                    ac.put("userName",string);
+

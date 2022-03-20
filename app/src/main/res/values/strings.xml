@@ -3,7 +3,8 @@
     <string name="textView1">Email Account</string>
     <string name="textView2">Email IMAP Password</string>
     <string name="Button">submit</string>
-    <string name="warning">Account/Password cannot be empty!</string>
+    <string name="warning1">Account/Password cannot be empty!</string>
+    <string name="warning2">Account/Password may be incorrect!</string>
     <string name="info">Info.</string>
     <string name="ver">Ver.</string>
     <string name="contact">New contact</string>
