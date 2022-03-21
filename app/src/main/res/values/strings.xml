@@ -11,7 +11,9 @@
     <string name="con_info">Contact Info</string>
     <string name="name">Name</string>
     <string name="email">Email Address</string>
-
+    <string name="Button2">sign of plus</string>
+    <string name="announcement1">turn on</string>
+    <string name="announcement2">turn off</string>
 
     <string-array name="Location_countries">
         <item>China</item>
@@ -24,18 +26,14 @@
         <item>India</item>
     </string-array>
     <string-array name="Location_province">
-        <item>GuangDong</item>
         <item>HuBei</item>
         <item>HuNan</item>
-        <item>BeiJing</item>
         <item>AnHui</item>
         <item>ShangHai</item>
-        <item>GuangXi</item>
     </string-array>
     <string-array name="Location_cities">
         <item>Guangzhou</item>
         <item>Shenzhen</item>
-        <item>BeiJing</item>
         <item>ShangHai</item>
     </string-array>
 

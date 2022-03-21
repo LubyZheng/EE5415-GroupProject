@@ -13,6 +13,18 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class contact extends AppCompatActivity {
     EditText address,name;
@@ -23,6 +35,9 @@ public class contact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+        //用户输入数据
+        address = (EditText) findViewById(R.id.edit_email);
+        name=(EditText) findViewById(R.id.edit_name);
         //location
         countryArray = getResources().getStringArray(R.array.Location_countries);
         provinceArray = getResources().getStringArray(R.array.Location_province);
@@ -70,83 +85,55 @@ public class contact extends AppCompatActivity {
                                                              }
                                                          });
         //Schedule Time
-        hourArray = getResources().getStringArray(R.array.Time_hours);
-        minArray = getResources().getStringArray(R.array.Time_min);
-        spinnerHour = (Spinner) findViewById(R.id.spinner_hours);
-        ArrayAdapter<String> adapterHour = new ArrayAdapter<String>(this,
-                R.layout.spinner_item, hourArray);
-        spinnerHour.setAdapter(adapterHour);
-        spinnerMin = (Spinner) findViewById(R.id.spinner_min);
-        ArrayAdapter<String> adapterMin = new ArrayAdapter<String>(this,
-                R.layout.spinner_item, minArray);
-        spinnerMin.setAdapter(adapterMin);
-        spinnerHour.setOnItemSelectedListener(new
-                                                         Spinner.OnItemSelectedListener() {
-                                                             @Override
-                                                             public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                                                                        int arg2, long arg3) {
-                                                                 country = arg0.getSelectedItemPosition() ; }
-                                                             @Override
-                                                             public void onNothingSelected(AdapterView<?> arg0) {
-                                                             }
-                                                         });
-        spinnerMin.setOnItemSelectedListener(new
-                                                      Spinner.OnItemSelectedListener() {
-                                                          @Override
-                                                          public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                                                                     int arg2, long arg3) {
-                                                              country = arg0.getSelectedItemPosition() ; }
-                                                          @Override
-                                                          public void onNothingSelected(AdapterView<?> arg0) {
-                                                          }
-                                                      });
+
+
+
+
         //  switch
-        Switch Weather,news,cov,more;
-        Weather=(Switch)super.findViewById(R.id.btn_Wea);
-        news=(Switch)super.findViewById(R.id.btn_news);
-        cov=(Switch)super.findViewById(R.id.btn_cov);
-        more=(Switch)super.findViewById(R.id.btn_more);
-        Weather.setOnClickListener(new CompoundButton.OnCheckedChangeListener(){
+        Switch Weather;
+        Switch news,cov,more;
+        Weather=(Switch)findViewById(R.id.btn_Wea);
+        news=(Switch)findViewById(R.id.btn_news);
+        cov=(Switch)findViewById(R.id.btn_cov);
+        more=(Switch)findViewById(R.id.btn_more);
+        Weather.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked){
-                if (isChecked){
-                    Boolean weather=true;
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+                if(isChecked){
+                    Toast.makeText(contact.this,R.string.announcement1,Toast.LENGTH_LONG).show();
                 }else{
-                   false;
+                    Toast.makeText(contact.this,R.string.announcement2,Toast.LENGTH_LONG).show();
                 }
             }
         });
-       news.setOnClickListener(new CompoundButton.OnCheckedChangeListener(){
+        news.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked){
-                if (isChecked){
-
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+                if(isChecked){
+                    Toast.makeText(contact.this,R.string.announcement1,Toast.LENGTH_LONG).show();
                 }else{
-
+                    Toast.makeText(contact.this,R.string.announcement2,Toast.LENGTH_LONG).show();
                 }
-
             }
         });
-        cov.setOnClickListener(new CompoundButton.OnCheckedChangeListener(){
+        cov.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked){
-                if (isChecked){
-                    json
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+                if(isChecked){
+                    Toast.makeText(contact.this,R.string.announcement1,Toast.LENGTH_LONG).show();
                 }else{
-                    json
+                    Toast.makeText(contact.this,R.string.announcement2,Toast.LENGTH_LONG).show();
                 }
-
             }
         });
-        more.setOnClickListener(new CompoundButton.OnCheckedChangeListener(){
+        more.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked){
-                if (isChecked){
-                    json
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+                if(isChecked){
+                    Toast.makeText(contact.this,R.string.announcement1,Toast.LENGTH_LONG).show();
                 }else{
-                    json
+                    Toast.makeText(contact.this,R.string.announcement2,Toast.LENGTH_LONG).show();
                 }
-
             }
         });
         Button Finish,Delete;
@@ -156,7 +143,7 @@ public class contact extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),
-                        MessageActivity.class);
+                        VersionActivity.class);
                 startActivity(intent);
             }
         });
@@ -169,5 +156,57 @@ public class contact extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient();
+                MediaType JSON =MediaType.parse("application/json; charset=utf-8");
+                JSONObject json =new JSONObject();
+                try{
+                    json.put("receiverName",name);
+                    json.put("emailAddress",address);
+
+                }catch ( JSONException e){
+                    e.printStackTrace();
+                }
+
+                RequestBody body = RequestBody.create(JSON,String.valueOf(json));
+
+                Request request = new Request.Builder()
+                        .url("http://10.0.2.2:8080/startTask")// 服务器端登录接口
+                        .post(body)
+                        .build();
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (response.isSuccessful()) {
+                        String result = response.body().string();
+                        json_activity(result);
+                    } else {
+                        throw new IOException("Unexpected code" + response);
+                    }
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void json_activity(String data){
+        try{
+            JSONObject jsonObject=new JSONObject(data);
+            String r =jsonObject.getString("success");
+            if (r.equals("true")){
+                Intent intent= new Intent(getApplicationContext(),
+                        MessageActivity.class);
+                startActivity(intent);
+
+            }else{
+                Toast.makeText(contact.this,R.string.warning2,Toast.LENGTH_LONG).show();
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
     }
 }
+

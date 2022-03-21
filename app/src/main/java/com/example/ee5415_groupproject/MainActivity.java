@@ -1,24 +1,31 @@
 package com.example.ee5415_groupproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.Map;
 
-import okhttp3.FormBody;
+
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.Request;
 
@@ -46,23 +53,30 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,R.string.warning1,Toast.LENGTH_LONG).show();
                 }else {
                     //请求服务器
-                    Okhttp(user_account,user_password);
+                    SendData(user_account,user_password);
                 }
             }
 
         });
     }
-    public void Okhttp ( final String account, final String password) {
+    public void SendData ( final String account, final String password) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 OkHttpClient client = new OkHttpClient();
-                FormBody body = new FormBody.Builder()
-                        .add("emailAccount", account)
-                        .add("emailImapPassword", password)
-                        .build();
+                MediaType JSON =MediaType.parse("application/json; charset=utf-8");
+                JSONObject json =new JSONObject();
+                try{
+                    json.put("account",account);
+                    json.put("password",password);
+                }catch ( JSONException e){
+                    e.printStackTrace();
+                }
+
+                RequestBody body = RequestBody.create(JSON,String.valueOf(json));
+
                 Request request = new Request.Builder()
-                        .url("http://127.0.0.1:8080/login")// 服务器端登录接口
+                        .url("http://10.0.2.2:8080/login")// 服务器端登录接口
                         .post(body)
                         .build();
                 try {
