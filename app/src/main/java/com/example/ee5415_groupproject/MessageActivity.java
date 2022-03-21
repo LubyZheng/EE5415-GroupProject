@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MessageActivity extends AppCompatActivity {
+    EditText Content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,16 +17,16 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
 
         Content =(EditText) findViewById(R.id.content1);
-        Music=(EditText) findViewById(R.id.Music);
-        Other=(EditText) findViewById(R.id.other);
+        //Music=(EditText) findViewById(R.id.Music);
+        //Other=(EditText) findViewById(R.id.other);
         Button send;
-        send=(Button)super.findViewById(R.id.text_del);
+        send=(Button)super.findViewById(R.id.btn_send);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String content = Content.getText().toString();
-                String music = Music.getText().toString();
-                String other = Other.getText().toString();
+                //String music = Music.getText().toString();
+                //String other = Other.getText().toString();
             }
         });
 

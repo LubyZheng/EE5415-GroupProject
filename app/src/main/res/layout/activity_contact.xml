@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".xxxx">
+    tools:context=".contact">
 
     <TextView
         android:id="@+id/text_info"
@@ -15,20 +15,26 @@
         android:padding="20dp"
         android:textSize="30sp"
         android:text="@string/con_info" />
+
     <EditText
         android:id="@+id/edit_name"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="@string/name"/>
+        android:background="@drawable/edit_background"
+        android:gravity="center_horizontal"
+        android:inputType="textShortMessage|textPersonName|text"
+        android:text="@string/name"
+        android:textSize="25sp" />
+
     <EditText
         android:id="@+id/edit_email"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="@string/email"/>
+        android:background="@drawable/edit_background"
+        android:gravity="center_horizontal"
+        android:inputType="textEmailAddress"
+        android:text="@string/email"
+        android:textSize="25sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
