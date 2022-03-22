@@ -5,6 +5,7 @@
     <string name="Button">submit</string>
     <string name="warning1">Account/Password cannot be empty!</string>
     <string name="warning2">Account/Password may be incorrect!</string>
+    <string name="warning3">Content cannot be empty!</string>
     <string name="info">Info.</string>
     <string name="ver">Ver.</string>
     <string name="contact">New contact</string>
@@ -12,6 +13,7 @@
     <string name="name">Name</string>
     <string name="email">Email Address</string>
     <string name="Button2">sign of plus</string>
+    <string name="Button3">tick</string>
     <string name="announcement1">turn on</string>
     <string name="announcement2">turn off</string>
 

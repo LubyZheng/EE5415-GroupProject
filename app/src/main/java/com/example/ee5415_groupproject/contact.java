@@ -30,14 +30,16 @@ public class contact extends AppCompatActivity {
     EditText address,name;
     String[] countryArray,provinceArray,cityArray,hourArray,minArray;
     Spinner spinnerCountry,spinnerProvince,spinnerCity,spinnerHour,spinnerMin;
-    int country,province,city;
+    String country,province,city;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         //用户输入数据
         address = (EditText) findViewById(R.id.edit_email);
+        String Address=address.getText().toString();
         name=(EditText) findViewById(R.id.edit_name);
+        String Name=name.getText().toString();
         //location
         countryArray = getResources().getStringArray(R.array.Location_countries);
         provinceArray = getResources().getStringArray(R.array.Location_province);
@@ -52,14 +54,14 @@ public class contact extends AppCompatActivity {
         spinnerProvince.setAdapter(adapterProvince);
         spinnerCity = (Spinner) findViewById(R.id.spinner_city);
         ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this,
-                R.layout.spinner_item, provinceArray);
+                R.layout.spinner_item, cityArray);
         spinnerCity.setAdapter(adapterCity);
         spinnerCountry.setOnItemSelectedListener(new
                 Spinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
             int arg2, long arg3) {
-                country = arg0.getSelectedItemPosition() ; }
+                country = countryArray[arg2] ; }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
             }
@@ -69,7 +71,7 @@ public class contact extends AppCompatActivity {
                                                              @Override
                                                              public void onItemSelected(AdapterView<?> arg0, View arg1,
                                                                                         int arg2, long arg3) {
-                                                                 province = arg0.getSelectedItemPosition() ; }
+                                                                 province = provinceArray[arg2]; }
                                                              @Override
                                                              public void onNothingSelected(AdapterView<?> arg0) {
                                                              }
@@ -79,7 +81,7 @@ public class contact extends AppCompatActivity {
                                                              @Override
                                                              public void onItemSelected(AdapterView<?> arg0, View arg1,
                                                                                         int arg2, long arg3) {
-                                                                 city = arg0.getSelectedItemPosition() ; }
+                                                                 city = cityArray[arg2] ; }
                                                              @Override
                                                              public void onNothingSelected(AdapterView<?> arg0) {
                                                              }
@@ -142,9 +144,62 @@ public class contact extends AppCompatActivity {
         Finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),
-                        VersionActivity.class);
-                startActivity(intent);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        OkHttpClient client = new OkHttpClient();
+                        MediaType JSON =MediaType.parse("application/json; charset=utf-8");
+                        JSONObject json1=new JSONObject();
+                        try{
+                            json1.put("country",country);
+                            json1.put("province",province);
+                            json1.put("city",city);
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                        JSONObject json2=new JSONObject();
+                        try{
+                            json2.put("hour","19");
+                            json2.put("minute","00");
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                        JSONObject json =new JSONObject();
+                        try{
+                            json.put("receiverName",Name);
+                            json.put("emailAddress",Address);
+                            json.put("location",json1);
+                            json.put("time",json2);
+                            json.put("weather",Weather.isChecked());
+                            json.put("news",news.isChecked());
+                            json.put("covid",cov.isChecked());
+
+                        }catch ( JSONException e){
+                            e.printStackTrace();
+                        }
+
+                        RequestBody body = RequestBody.create(JSON,String.valueOf(json));
+
+                        Request request = new Request.Builder()
+                                .url("http://10.0.2.2:8080/startTask")// 服务器端登录接口
+                                .post(body)
+                                .build();
+                        try {
+                            Response response = client.newCall(request).execute();
+                            if (response.isSuccessful()) {
+                                String result = response.body().string();
+                                json_activity(result);
+                            } else {
+                                throw new IOException("Unexpected code" + response);
+                            }
+
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+
             }
         });
         //need to be changed
@@ -156,53 +211,24 @@ public class contact extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                OkHttpClient client = new OkHttpClient();
-                MediaType JSON =MediaType.parse("application/json; charset=utf-8");
-                JSONObject json =new JSONObject();
-                try{
-                    json.put("receiverName",name);
-                    json.put("emailAddress",address);
 
-                }catch ( JSONException e){
-                    e.printStackTrace();
-                }
-
-                RequestBody body = RequestBody.create(JSON,String.valueOf(json));
-
-                Request request = new Request.Builder()
-                        .url("http://10.0.2.2:8080/startTask")// 服务器端登录接口
-                        .post(body)
-                        .build();
-                try {
-                    Response response = client.newCall(request).execute();
-                    if (response.isSuccessful()) {
-                        String result = response.body().string();
-                        json_activity(result);
-                    } else {
-                        throw new IOException("Unexpected code" + response);
-                    }
-
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
     }
     public void json_activity(String data){
         try{
             JSONObject jsonObject=new JSONObject(data);
             String r =jsonObject.getString("success");
+            address = (EditText) findViewById(R.id.edit_email);
+            String Address=address.getText().toString();
+            name=(EditText) findViewById(R.id.edit_name);
+            String Name=name.getText().toString();
             if (r.equals("true")){
                 Intent intent= new Intent(getApplicationContext(),
                         MessageActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("receiverName",Name);
+                bundle.putString("emailAddress",Address);
+                intent.putExtras(bundle);
                 startActivity(intent);
-
-            }else{
-                Toast.makeText(contact.this,R.string.warning2,Toast.LENGTH_LONG).show();
             }
         }catch (JSONException e){
             e.printStackTrace();
