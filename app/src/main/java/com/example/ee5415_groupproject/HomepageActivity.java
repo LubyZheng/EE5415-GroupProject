@@ -15,11 +15,12 @@ import org.json.JSONObject;
 
 public class HomepageActivity extends AppCompatActivity {
     Button ContactButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        ContactButton=(Button) findViewById(R.id.btn_con);
+        ContactButton = (Button) findViewById(R.id.btn_con);
         ContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,12 +31,14 @@ public class HomepageActivity extends AppCompatActivity {
         });
 
 
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_options, menu);
-        return true; }
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -51,7 +54,8 @@ public class HomepageActivity extends AppCompatActivity {
                 startActivity(intent2);
                 return true;
         }
-        return false; }
+        return false;
+    }
 
 }
 

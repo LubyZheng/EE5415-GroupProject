@@ -9,7 +9,8 @@
     <string name="info">Info.</string>
     <string name="ver">Ver.</string>
     <string name="contact">New contact</string>
-    <string name="con_info">Contact Info</string>
+    <string name="con_info">Contact Information</string>
+    <string name="personal_info">Personal Information</string>
     <string name="name">Name</string>
     <string name="email">Email Address</string>
     <string name="Button2">sign of plus</string>
@@ -39,5 +40,5 @@
         <item>ShangHai</item>
     </string-array>
 
-
+    <string name="server">http://10.0.2.2:8080</string>
 </resources>

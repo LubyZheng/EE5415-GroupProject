@@ -25,38 +25,39 @@ public class MessageActivity extends AppCompatActivity {
     EditText Content;
 
     Button send;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        Content =(EditText) findViewById(R.id.content1);
-        send=(Button) findViewById(R.id.btn_send);
+        Content = (EditText) findViewById(R.id.content1);
+        send = (Button) findViewById(R.id.btn_send);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String content = Content.getText().toString();
-                Bundle bundle=getIntent().getExtras();
-                String name=bundle.getString("receiverName");
-                String address=bundle.getString("emailAddress");
+                Bundle bundle = getIntent().getExtras();
+                String name = bundle.getString("receiverName");
+                String address = bundle.getString("emailAddress");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         OkHttpClient client = new OkHttpClient();
-                        MediaType JSON =MediaType.parse("application/json; charset=utf-8");
-                        JSONObject json =new JSONObject();
-                        try{
-                            json.put("receiverName",name);
-                            json.put("emailAddress",address);
-                            json.put("content",content);
-                        }catch ( JSONException e){
+                        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                        JSONObject json = new JSONObject();
+                        try {
+                            json.put("receiverName", name);
+                            json.put("emailAddress", address);
+                            json.put("content", content);
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        RequestBody body = RequestBody.create(JSON,String.valueOf(json));
+                        RequestBody body = RequestBody.create(JSON, String.valueOf(json));
 
                         Request request = new Request.Builder()
-                                .url("http://10.0.2.2:8080/getContent")// 服务器端登录接口
+                                .url(getString(R.string.server) + "/getContent")// 服务器端登录接口
                                 .post(body)
                                 .build();
                         try {
@@ -79,18 +80,20 @@ public class MessageActivity extends AppCompatActivity {
 
 
     }
-    public void json_activity(String data){
-        try{
-            JSONObject jsonObject=new JSONObject(data);
-            String r =jsonObject.getString("success");
-            if (r.equals("true")){
-                Intent intent= new Intent(getApplicationContext(),
+
+    public void json_activity(String data) {
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            String r = jsonObject.getString("success");
+            if (r.equals("true")) {
+                Intent intent = new Intent(getApplicationContext(),
                         VersionActivity.class);
                 startActivity(intent);
-            }else{
-                Toast.makeText(MessageActivity.this,R.string.warning3,Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(MessageActivity.this,
+                        R.string.warning3, Toast.LENGTH_LONG).show();
             }
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }

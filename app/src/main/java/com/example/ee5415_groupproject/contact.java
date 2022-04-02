@@ -27,19 +27,20 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class contact extends AppCompatActivity {
-    EditText address,name;
-    String[] countryArray,provinceArray,cityArray,hourArray,minArray;
-    Spinner spinnerCountry,spinnerProvince,spinnerCity,spinnerHour,spinnerMin;
-    String country,province,city;
+    EditText address, name;
+    String[] countryArray, provinceArray, cityArray, hourArray, minArray;
+    Spinner spinnerCountry, spinnerProvince, spinnerCity, spinnerHour, spinnerMin;
+    String country, province, city;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         //用户输入数据
         address = (EditText) findViewById(R.id.edit_email);
-        String Address=address.getText().toString();
-        name=(EditText) findViewById(R.id.edit_name);
-        String Name=name.getText().toString();
+        String Address = address.getText().toString();
+        name = (EditText) findViewById(R.id.edit_name);
+        String Name = name.getText().toString();
         //location
         countryArray = getResources().getStringArray(R.array.Location_countries);
         provinceArray = getResources().getStringArray(R.array.Location_province);
@@ -56,91 +57,103 @@ public class contact extends AppCompatActivity {
         ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, cityArray);
         spinnerCity.setAdapter(adapterCity);
-        spinnerCountry.setOnItemSelectedListener(new
-                Spinner.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-            int arg2, long arg3) {
-                country = countryArray[arg2] ; }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
-        spinnerProvince.setOnItemSelectedListener(new
-                                                         Spinner.OnItemSelectedListener() {
-                                                             @Override
-                                                             public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                                                                        int arg2, long arg3) {
-                                                                 province = provinceArray[arg2]; }
-                                                             @Override
-                                                             public void onNothingSelected(AdapterView<?> arg0) {
-                                                             }
-                                                         });
-        spinnerCity.setOnItemSelectedListener(new
-                                                         Spinner.OnItemSelectedListener() {
-                                                             @Override
-                                                             public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                                                                        int arg2, long arg3) {
-                                                                 city = cityArray[arg2] ; }
-                                                             @Override
-                                                             public void onNothingSelected(AdapterView<?> arg0) {
-                                                             }
-                                                         });
+        spinnerCountry.setOnItemSelectedListener(
+                new Spinner.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+                        country = countryArray[arg2];
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                    }
+                });
+        spinnerProvince.setOnItemSelectedListener(
+                new Spinner.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+                        province = provinceArray[arg2];
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                    }
+                });
+        spinnerCity.setOnItemSelectedListener(
+                new Spinner.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+                        city = cityArray[arg2];
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                    }
+                });
         //Schedule Time
-
-
 
 
         //  switch
         Switch Weather;
-        Switch news,cov,more;
-        Weather=(Switch)findViewById(R.id.btn_Wea);
-        news=(Switch)findViewById(R.id.btn_news);
-        cov=(Switch)findViewById(R.id.btn_cov);
-        more=(Switch)findViewById(R.id.btn_more);
-        Weather.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        Switch news, cov, more;
+        Weather = (Switch) findViewById(R.id.btn_Wea);
+        news = (Switch) findViewById(R.id.btn_news);
+        cov = (Switch) findViewById(R.id.btn_cov);
+//        more = (Switch) findViewById(R.id.btn_more);
+        Weather.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if(isChecked){
-                    Toast.makeText(contact.this,R.string.announcement1,Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(contact.this,R.string.announcement2,Toast.LENGTH_LONG).show();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Toast.makeText(contact.this,
+                            R.string.announcement1, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(contact.this,
+                            R.string.announcement2, Toast.LENGTH_LONG).show();
                 }
             }
         });
-        news.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        news.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if(isChecked){
-                    Toast.makeText(contact.this,R.string.announcement1,Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(contact.this,R.string.announcement2,Toast.LENGTH_LONG).show();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Toast.makeText(contact.this,
+                            R.string.announcement1, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(contact.this,
+                            R.string.announcement2, Toast.LENGTH_LONG).show();
                 }
             }
         });
-        cov.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        cov.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if(isChecked){
-                    Toast.makeText(contact.this,R.string.announcement1,Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(contact.this,R.string.announcement2,Toast.LENGTH_LONG).show();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Toast.makeText(contact.this,
+                            R.string.announcement1, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(contact.this,
+                            R.string.announcement2, Toast.LENGTH_LONG).show();
                 }
             }
         });
-        more.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-                if(isChecked){
-                    Toast.makeText(contact.this,R.string.announcement1,Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(contact.this,R.string.announcement2,Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        Button Finish,Delete;
-        Finish=(Button)super.findViewById(R.id.text_finish);
-        Delete=(Button)super.findViewById(R.id.text_del);
+//        more.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    Toast.makeText(contact.this,
+//                            R.string.announcement1, Toast.LENGTH_LONG).show();
+//                } else {
+//                    Toast.makeText(contact.this,
+//                            R.string.announcement2, Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+        Button Finish, Delete;
+        Finish = (Button) super.findViewById(R.id.text_finish);
+        Delete = (Button) super.findViewById(R.id.text_del);
         Finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,40 +161,40 @@ public class contact extends AppCompatActivity {
                     @Override
                     public void run() {
                         OkHttpClient client = new OkHttpClient();
-                        MediaType JSON =MediaType.parse("application/json; charset=utf-8");
-                        JSONObject json1=new JSONObject();
-                        try{
-                            json1.put("country",country);
-                            json1.put("province",province);
-                            json1.put("city",city);
-                        }catch (JSONException e){
+                        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                        JSONObject json1 = new JSONObject();
+                        try {
+                            json1.put("country", country);
+                            json1.put("province", province);
+                            json1.put("city", city);
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        JSONObject json2=new JSONObject();
-                        try{
-                            json2.put("hour","19");
-                            json2.put("minute","00");
-                        }catch (JSONException e){
+                        JSONObject json2 = new JSONObject();
+                        try {
+                            json2.put("hour", "19");
+                            json2.put("minute", "00");
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        JSONObject json =new JSONObject();
-                        try{
-                            json.put("receiverName",Name);
-                            json.put("emailAddress",Address);
-                            json.put("location",json1);
-                            json.put("time",json2);
-                            json.put("weather",Weather.isChecked());
-                            json.put("news",news.isChecked());
-                            json.put("covid",cov.isChecked());
+                        JSONObject json = new JSONObject();
+                        try {
+                            json.put("receiverName", Name);
+                            json.put("emailAddress", Address);
+                            json.put("location", json1);
+                            json.put("time", json2);
+                            json.put("weather", Weather.isChecked());
+                            json.put("news", news.isChecked());
+                            json.put("covid", cov.isChecked());
 
-                        }catch ( JSONException e){
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        RequestBody body = RequestBody.create(JSON,String.valueOf(json));
+                        RequestBody body = RequestBody.create(JSON, String.valueOf(json));
 
                         Request request = new Request.Builder()
-                                .url("http://10.0.2.2:8080/startTask")// 服务器端登录接口
+                                .url(getString(R.string.server) + "/startTask")// 服务器端登录接口
                                 .post(body)
                                 .build();
                         try {
@@ -213,24 +226,25 @@ public class contact extends AppCompatActivity {
         });
 
     }
-    public void json_activity(String data){
-        try{
-            JSONObject jsonObject=new JSONObject(data);
-            String r =jsonObject.getString("success");
+
+    public void json_activity(String data) {
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            String r = jsonObject.getString("success");
             address = (EditText) findViewById(R.id.edit_email);
-            String Address=address.getText().toString();
-            name=(EditText) findViewById(R.id.edit_name);
-            String Name=name.getText().toString();
-            if (r.equals("true")){
-                Intent intent= new Intent(getApplicationContext(),
+            String Address = address.getText().toString();
+            name = (EditText) findViewById(R.id.edit_name);
+            String Name = name.getText().toString();
+            if (r.equals("true")) {
+                Intent intent = new Intent(getApplicationContext(),
                         MessageActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("receiverName",Name);
-                bundle.putString("emailAddress",Address);
+                Bundle bundle = new Bundle();
+                bundle.putString("receiverName", Name);
+                bundle.putString("emailAddress", Address);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }

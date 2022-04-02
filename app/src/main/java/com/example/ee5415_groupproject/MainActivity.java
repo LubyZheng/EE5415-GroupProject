@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText account, password;
     Button loginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,34 +50,35 @@ public class MainActivity extends AppCompatActivity {
                 String user_account = account.getText().toString();
                 String user_password = password.getText().toString();
                 //验证输入是否为空
-                if(user_account.equals("")||(user_password.equals(""))){
-                    Toast.makeText(MainActivity.this,R.string.warning1,Toast.LENGTH_LONG).show();
-                }else {
+                if (user_account.equals("") || (user_password.equals(""))) {
+                    Toast.makeText(MainActivity.this,
+                            R.string.warning1, Toast.LENGTH_LONG).show();
+                } else {
                     //请求服务器
-                    SendData(user_account,user_password);
+                    SendData(user_account, user_password);
                 }
             }
 
         });
     }
-    public void SendData ( final String account, final String password) {
+
+    public void SendData(final String account, final String password) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 OkHttpClient client = new OkHttpClient();
-                MediaType JSON =MediaType.parse("application/json; charset=utf-8");
-                JSONObject json =new JSONObject();
-                try{
-                    json.put("account",account);
-                    json.put("password",password);
-                }catch ( JSONException e){
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("account", account);
+                    json.put("password", password);
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                RequestBody body = RequestBody.create(JSON,String.valueOf(json));
-
+                RequestBody body = RequestBody.create(JSON, String.valueOf(json));
                 Request request = new Request.Builder()
-                        .url("http://10.0.2.2:8080/login")// 服务器端登录接口
+                        .url(getString(R.string.server) + "/login")// 服务器端登录接口
                         .post(body)
                         .build();
                 try {
@@ -95,19 +97,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
-    public void json_activity(String data){
-        try{
-            JSONObject jsonObject=new JSONObject(data);
-            String r =jsonObject.getString("success");
-            if (r.equals("true")){
-                Intent intent= new Intent(getApplicationContext(),
+
+    public void json_activity(String data) {
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            String r = jsonObject.getString("success");
+            if (r.equals("true")) {
+                Intent intent = new Intent(getApplicationContext(),
                         HomepageActivity.class);
                 startActivity(intent);
 
-            }else{
-                Toast.makeText(MainActivity.this,R.string.warning2,Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(MainActivity.this,
+                        R.string.warning2, Toast.LENGTH_LONG).show();
             }
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }

@@ -35,8 +35,9 @@ import okhttp3.Request;
 
 public class InfoActivity extends AppCompatActivity {
 
-    EditText account, password,signature;
+    EditText account, password, signature;
     Button loginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class InfoActivity extends AppCompatActivity {
         //获取用户输入数据
         account = (EditText) findViewById(R.id.editText1);
         password = (EditText) findViewById(R.id.editText2);
-        signature=(EditText) findViewById(R.id.editText3);
+        signature = (EditText) findViewById(R.id.editText3);
         loginButton = (Button) findViewById(R.id.button);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,35 +55,38 @@ public class InfoActivity extends AppCompatActivity {
                 String user_password = password.getText().toString();
                 String user_signature = signature.getText().toString();
                 //验证输入是否为空
-                if(user_account.equals("")||user_password.equals("")||user_signature.equals("")){
-                    Toast.makeText(InfoActivity.this,R.string.warning1,Toast.LENGTH_LONG).show();
-                }else {
+                if (user_account.equals("") || user_password.equals("")
+                        || user_signature.equals("")) {
+                    Toast.makeText(InfoActivity.this,
+                            R.string.warning1, Toast.LENGTH_LONG).show();
+                } else {
                     //请求服务器
-                    SendData(user_account,user_password,user_signature);
+                    SendData(user_account, user_password, user_signature);
                 }
             }
 
         });
     }
-    public void SendData ( final String account, final String password,final String signature) {
+
+    public void SendData(final String account, final String password, final String signature) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 OkHttpClient client = new OkHttpClient();
-                MediaType JSON =MediaType.parse("application/json; charset=utf-8");
-                JSONObject json =new JSONObject();
-                try{
-                    json.put("account",account);
-                    json.put("password",password);
-                    json.put("signature",signature);
-                }catch ( JSONException e){
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("account", account);
+                    json.put("password", password);
+                    json.put("signature", signature);
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                RequestBody body = RequestBody.create(JSON,String.valueOf(json));
+                RequestBody body = RequestBody.create(JSON, String.valueOf(json));
 
                 Request request = new Request.Builder()
-                        .url("http://10.0.2.2:8080/updateInfo")// 服务器端update接口
+                        .url(getString(R.string.server) + "/updateInfo")// 服务器端update接口
                         .post(body)
                         .build();
                 try {
@@ -101,19 +105,21 @@ public class InfoActivity extends AppCompatActivity {
             }
         }).start();
     }
-    public void json_activity(String data){
-        try{
-            JSONObject jsonObject=new JSONObject(data);
-            String r =jsonObject.getString("success");
-            if (r.equals("true")){
-                Intent intent= new Intent(getApplicationContext(),
+
+    public void json_activity(String data) {
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            String r = jsonObject.getString("success");
+            if (r.equals("true")) {
+                Intent intent = new Intent(getApplicationContext(),
                         HomepageActivity.class);
                 startActivity(intent);
 
-            }else{
-                Toast.makeText(InfoActivity.this,R.string.warning2,Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(InfoActivity.this,
+                        R.string.warning2, Toast.LENGTH_LONG).show();
             }
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
