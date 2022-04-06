@@ -12,8 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:gravity="center_horizontal"
+        android:background="@drawable/edit_background"
         android:text="The current version is 1.0"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

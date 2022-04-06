@@ -20,24 +20,143 @@
 
     <string-array name="Location_countries">
         <item>China</item>
-        <item>United States</item>
-        <item>The United Kingdom</item>
-        <item>France</item>
-        <item>Germany</item>
-        <item>South Korea</item>
-        <item>Japan</item>
-        <item>India</item>
     </string-array>
-    <string-array name="Location_province">
-        <item>HuBei</item>
-        <item>HuNan</item>
-        <item>AnHui</item>
-        <item>ShangHai</item>
+
+    <string-array name="Location_provinces">
+        <item>Guangdong</item>
+        <item>Hunan</item>
     </string-array>
-    <string-array name="Location_cities">
+
+    <string-array name="Location_cities_GD">
         <item>Guangzhou</item>
         <item>Shenzhen</item>
-        <item>ShangHai</item>
+        <item>Zhuhai</item>
+        <item>Foshan</item>
+        <item>Shaoguan</item>
+        <item>Shantou</item>
+        <item>Jiangmen</item>
+        <item>Zhanjiang</item>
+        <item>Maoming</item>
+        <item>Zhaoqing</item>
+        <item>Huizhou</item>
+        <item>Meizhou</item>
+        <item>Shanwei</item>
+        <item>Heyuan</item>
+        <item>Yangjiang</item>
+        <item>Qingyuan</item>
+        <item>Dongguan</item>
+        <item>Zhongshan</item>
+        <item>Chaozhou</item>
+        <item>Jieyang</item>
+        <item>Yunfu</item>
+    </string-array>
+
+    <string-array name="Location_cities_HN">
+        <item>Changsha</item>
+        <item>Zhuzhou</item>
+        <item>Xiangtan</item>
+        <item>Hengyang</item>
+        <item>Shaoyang</item>
+        <item>Yueyang</item>
+        <item>Changde</item>
+        <item>Zhangjiajie</item>
+        <item>Yiyang</item>
+        <item>Chenzhou</item>
+        <item>Yongzhou</item>
+        <item>Huaihua</item>
+        <item>Loudi</item>
+        <item>Xiangxi</item>
+    </string-array>
+
+    <string-array name="Hours">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+
+    <string-array name="Minutes">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+        <item>60</item>
     </string-array>
 
     <string name="server">http://10.0.2.2:8080</string>

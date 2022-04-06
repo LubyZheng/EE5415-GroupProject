@@ -43,8 +43,8 @@ public class contact extends AppCompatActivity {
         String Name = name.getText().toString();
         //location
         countryArray = getResources().getStringArray(R.array.Location_countries);
-        provinceArray = getResources().getStringArray(R.array.Location_province);
-        cityArray = getResources().getStringArray(R.array.Location_cities);
+        provinceArray = getResources().getStringArray(R.array.Location_provinces);
+        //cityArray = getResources().getStringArray(R.array.Location_cities);
         spinnerCountry = (Spinner) findViewById(R.id.spinner_country);
         ArrayAdapter<String> adapterCountry = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, countryArray);

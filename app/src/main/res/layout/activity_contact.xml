@@ -11,6 +11,7 @@
         android:id="@+id/text_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/edit_background"
         android:gravity="center_horizontal"
         android:padding="20dp"
         android:text="@string/con_info"
@@ -20,7 +21,7 @@
         android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_background"
+        android:background="@android:drawable/edit_text"
         android:gravity="center_horizontal"
         android:text="@string/name"
         android:textSize="30sp" />
@@ -29,7 +30,7 @@
         android:id="@+id/edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_background"
+        android:background="@android:drawable/edit_text"
         android:gravity="center_horizontal"
         android:inputType="textEmailAddress"
         android:text="@string/email"
@@ -38,7 +39,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@drawable/edit_background">
 
         <TextView
             android:id="@+id/Location"
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginTop="10dp"
+
             app:layout_constraintBottom_toBottomOf="@+id/Location"
             app:layout_constraintEnd_toStartOf="@+id/spinner_province"
             app:layout_constraintStart_toEndOf="@+id/Location"
@@ -146,7 +149,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_background">
         <TextView
             android:id="@+id/text_Wea"
             android:layout_width="wrap_content"
@@ -177,7 +181,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_background">
 
         <TextView
             android:id="@+id/text_news"
@@ -209,7 +214,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_background">
 
         <TextView
             android:id="@+id/text_cov"

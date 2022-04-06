@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:background="@drawable/edit_background"
         android:padding="20dp"
         android:text="Message"
         android:textSize="30sp"
@@ -24,31 +25,30 @@
 
     <EditText
         android:id="@+id/content1"
-        android:layout_width="match_parent"
-        android:layout_height="324dp"
+        android:layout_width="359dp"
+        android:layout_height="344dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:gravity="center_horizontal"
-        android:padding="100dp"
-        android:text="Content"
+        android:background="@android:drawable/edit_text"
+        android:gravity="top"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/text_mess"
-        app:layout_constraintVertical_bias="0.292"
-        android:background="@drawable/edit_background"/>
+        app:layout_constraintVertical_bias="0.292" />
 
     <Button
         android:id="@+id/btn_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="60dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
+        android:background="@android:color/transparent"
+        android:foreground="@drawable/commit"
         android:gravity="center_horizontal"
-        android:text="@string/Button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/content1" />
