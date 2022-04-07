@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     //请求服务器
                     SendData(user_account, user_password);
-                    savePreferences(user_account);
                 }
             }
 
@@ -99,10 +97,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        loadPreferences(); }
 
     public void json_activity(String data) {
         try {
@@ -120,14 +114,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-    public void savePreferences(String a) {
-        SharedPreferences pref = getSharedPreferences("DailyMessage", MODE_PRIVATE);
-        pref.edit().putString("account", a).commit();
-    }
-    public void loadPreferences() {
-        SharedPreferences pref = getSharedPreferences("DailyMessage", MODE_PRIVATE);
-        account.setText(pref.getString("account", "0"));
     }
 
 

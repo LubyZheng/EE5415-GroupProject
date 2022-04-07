@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:background="@android:drawable/edit_text"
         android:gravity="center_horizontal"
-        android:text="@string/name"
+        android:hint="@string/name"
         android:textSize="30sp" />
 
     <EditText
@@ -33,7 +33,7 @@
         android:background="@android:drawable/edit_text"
         android:gravity="center_horizontal"
         android:inputType="textEmailAddress"
-        android:text="@string/email"
+        android:hint="@string/email"
         android:textSize="30sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

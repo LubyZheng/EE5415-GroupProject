@@ -22,16 +22,16 @@
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="423dp" />
 
     <Button
         android:id="@+id/btn_con1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="196dp"
-        android:background="@android:color/transparent"
-        android:foreground="@drawable/ic_icon_add"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_background"
+        android:foreground="@drawable/ic_icon_add">
     </Button>
 
 

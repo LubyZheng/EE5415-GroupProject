@@ -53,10 +53,10 @@ public class contact extends AppCompatActivity {
         ArrayAdapter<String> adapterProvince = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, provinceArray);
         spinnerProvince.setAdapter(adapterProvince);
-        //spinnerCity = (Spinner) findViewById(R.id.spinner_city);
-        //ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this,
-                //R.layout.spinner_item, cityArray);
-        //spinnerCity.setAdapter(adapterCity);
+//        spinnerCity = (Spinner) findViewById(R.id.spinner_city);
+//        ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this,
+//                R.layout.spinner_item, cityArray);
+//        spinnerCity.setAdapter(adapterCity);
         spinnerCountry.setOnItemSelectedListener(
                 new Spinner.OnItemSelectedListener() {
                     @Override
@@ -81,18 +81,18 @@ public class contact extends AppCompatActivity {
                     public void onNothingSelected(AdapterView<?> arg0) {
                     }
                 });
-        //spinnerCity.setOnItemSelectedListener(
-                //new Spinner.OnItemSelectedListener() {
-                    //@Override
-                    //public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               //int arg2, long arg3) {
-                        //city = cityArray[arg2];
-                    //}
+        spinnerCity.setOnItemSelectedListener(
+                new Spinner.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+                        city = cityArray[arg2];
+                    }
 
-                    //@Override
-                    //public void onNothingSelected(AdapterView<?> arg0) {
-                    //}
-               // });
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                    }
+                });
         //Schedule Time
 
 
