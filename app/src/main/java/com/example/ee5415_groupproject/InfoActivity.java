@@ -4,6 +4,7 @@ package com.example.ee5415_groupproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -62,12 +63,16 @@ public class InfoActivity extends AppCompatActivity {
                 } else {
                     //请求服务器
                     SendData(user_account, user_password, user_signature);
+                    savePreferences(user_account, user_password, user_signature);
                 }
             }
 
         });
     }
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadPreferences(); }
     public void SendData(final String account, final String password, final String signature) {
         new Thread(new Runnable() {
             @Override
@@ -122,6 +127,18 @@ public class InfoActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+    public void savePreferences(String a,String p,String s) {
+        SharedPreferences pref = getSharedPreferences("DailyMessage", MODE_PRIVATE);
+        pref.edit().putString("account", a).commit();
+        pref.edit().putString("password", p).commit();
+        pref.edit().putString("signature", s).commit();
+    }
+    public void loadPreferences() {
+        SharedPreferences pref = getSharedPreferences("DailyMessage", MODE_PRIVATE);
+        account.setText(pref.getString("account", "0"));
+        password.setText(pref.getString("password", "0"));
+        signature.setText(pref.getString("password", "0"));
     }
 
 
