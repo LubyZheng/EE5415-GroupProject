@@ -27,10 +27,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class contact extends AppCompatActivity {
-    EditText address, name,hours,min;
-    String[] countryArray, provinceArray, cityArray, hourArray, minArray;
-    Spinner spinnerCountry, spinnerProvince, spinnerCity, spinnerHour, spinnerMin;
-    String country, province, city;
+    EditText address, name, hour, min;
+    String[] provinceArray, cityArray;
+    Spinner spinnerProvince, spinnerCity;
+    String province, city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,75 +38,62 @@ public class contact extends AppCompatActivity {
         setContentView(R.layout.activity_contact);
         //用户输入数据
         address = (EditText) findViewById(R.id.edit_email);
-        String Address = address.getText().toString();
         name = (EditText) findViewById(R.id.edit_name);
-        String Name = name.getText().toString();
-        hours = (EditText) findViewById(R.id.spinner_hours);
-        String hour =hours.getText().toString();
+        hour = (EditText) findViewById(R.id.spinner_hours);
         min = (EditText) findViewById(R.id.spinner_min);
         String Min = min.getText().toString();
         //location
-        countryArray = getResources().getStringArray(R.array.Location_countries);
-        provinceArray = getResources().getStringArray(R.array.Location_provinces);
-        //cityArray = getResources().getStringArray(R.array.Location_cities);
-        spinnerCountry = (Spinner) findViewById(R.id.spinner_country);
-        ArrayAdapter<String> adapterCountry = new ArrayAdapter<String>(this,
-                R.layout.spinner_item, countryArray);
-        spinnerCountry.setAdapter(adapterCountry);
         spinnerProvince = (Spinner) findViewById(R.id.spinner_province);
+        spinnerCity = (Spinner) findViewById(R.id.spinner_city);
+        provinceArray = getResources().getStringArray(R.array.Location_provinces);
         ArrayAdapter<String> adapterProvince = new ArrayAdapter<String>(this,
                 R.layout.spinner_item, provinceArray);
         spinnerProvince.setAdapter(adapterProvince);
-//        spinnerCity = (Spinner) findViewById(R.id.spinner_city);
-//        ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this,
-//                R.layout.spinner_item, cityArray);
-//        spinnerCity.setAdapter(adapterCity);
-        spinnerCountry.setOnItemSelectedListener(
-                new Spinner.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-                        country = countryArray[arg2];
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> arg0) {
-                    }
-                });
+        ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(this,
+                R.layout.spinner_item, provinceArray);
+        spinnerCity.setAdapter(adapterCity);
         spinnerProvince.setOnItemSelectedListener(
                 new Spinner.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> arg0, View arg1,
                                                int arg2, long arg3) {
                         province = provinceArray[arg2];
+                        if (province.equals("Guangdong")) {
+                            cityArray = getResources().getStringArray(R.array.Location_cities_GD);
+                        } else if (province.equals("Hunan")) {
+                            cityArray = getResources().getStringArray(R.array.Location_cities_HN);
+                        }
+                        ArrayAdapter<String> adapterCity = new ArrayAdapter<String>(
+                                contact.this, R.layout.spinner_item, cityArray);
+                        spinnerCity.setAdapter(adapterCity);
                     }
 
                     @Override
                     public void onNothingSelected(AdapterView<?> arg0) {
+                        province = "";
                     }
                 });
-        //spinnerCity.setOnItemSelectedListener(
-                //new Spinner.OnItemSelectedListener() {
-                    //@Override
-                    //public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               //int arg2, long arg3) {
-                        //city = cityArray[arg2];
-                    //}
 
-                   // @Override
-                   // public void onNothingSelected(AdapterView<?> arg0) {
-                    //}
-               // });
-        //Schedule Time
+        spinnerCity.setOnItemSelectedListener(
+                new Spinner.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+                        city = cityArray[arg2];
+                    }
 
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        city = "";
+                    }
+                });
 
         //  switch
         Switch Weather;
-        Switch news, cov, more;
+        Switch news, cov;
         Weather = (Switch) findViewById(R.id.btn_Wea);
         news = (Switch) findViewById(R.id.btn_news);
         cov = (Switch) findViewById(R.id.btn_cov);
-//        more = (Switch) findViewById(R.id.btn_more);
         Weather.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -143,18 +130,6 @@ public class contact extends AppCompatActivity {
                 }
             }
         });
-//        more.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked) {
-//                    Toast.makeText(contact.this,
-//                            R.string.announcement1, Toast.LENGTH_LONG).show();
-//                } else {
-//                    Toast.makeText(contact.this,
-//                            R.string.announcement2, Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
         Button Finish, Delete;
         Finish = (Button) super.findViewById(R.id.text_finish);
         Delete = (Button) super.findViewById(R.id.text_del);
@@ -168,7 +143,7 @@ public class contact extends AppCompatActivity {
                         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                         JSONObject json1 = new JSONObject();
                         try {
-                            json1.put("country", country);
+                            json1.put("country", "China");
                             json1.put("province", province);
                             json1.put("city", city);
                         } catch (JSONException e) {
@@ -176,15 +151,15 @@ public class contact extends AppCompatActivity {
                         }
                         JSONObject json2 = new JSONObject();
                         try {
-                            json2.put("hour", hour);
-                            json2.put("minute", Min);
+                            json2.put("hour", hour.getText().toString());
+                            json2.put("minute", min.getText().toString());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         JSONObject json = new JSONObject();
                         try {
-                            json.put("receiverName", Name);
-                            json.put("emailAddress", Address);
+                            json.put("receiverName", name.getText().toString());
+                            json.put("emailAddress", address.getText().toString());
                             json.put("location", json1);
                             json.put("time", json2);
                             json.put("weather", Weather.isChecked());

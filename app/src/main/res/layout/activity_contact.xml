@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".contact">
 
     <TextView
@@ -15,164 +15,162 @@
         android:gravity="center_horizontal"
         android:padding="20dp"
         android:text="@string/con_info"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/edit_text"
         android:gravity="center_horizontal"
         android:hint="@string/name"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/edit_text"
         android:gravity="center_horizontal"
-        android:inputType="textEmailAddress"
         android:hint="@string/email"
-        android:textSize="30sp" />
+        android:inputType="textEmailAddress"
+        android:textSize="20sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@drawable/edit_background">
+        android:background="@drawable/edit_background"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/Location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:padding="10dp"
-            android:text="Location"
+            android:layout_width="40dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/address"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/spinner_country"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Spinner
-            android:id="@+id/spinner_country"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="10dp"
-
-            app:layout_constraintBottom_toBottomOf="@+id/Location"
-            app:layout_constraintEnd_toStartOf="@+id/spinner_province"
-            app:layout_constraintStart_toEndOf="@+id/Location"
-            app:layout_constraintTop_toTopOf="@+id/Location"
-            app:layout_constraintVertical_bias="0.515" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
             android:id="@+id/spinner_province"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/spinner_country"
-            android:layout_alignTop="@+id/spinner_country"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/Location"
-            app:layout_constraintEnd_toStartOf="@+id/spinner_city"
-            app:layout_constraintHorizontal_bias="0.095"
-            app:layout_constraintStart_toEndOf="@+id/spinner_country"
-            app:layout_constraintTop_toTopOf="@+id/Location"
-            app:layout_constraintVertical_bias="0.515" />
+            app:layout_constraintStart_toEndOf="@+id/Location"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
             android:id="@+id/spinner_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/Location"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/spinner_province"
-            app:layout_constraintTop_toTopOf="@+id/Location"
-            app:layout_constraintVertical_bias="0.515" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="6dp">
 
         <TextView
             android:id="@+id/text_sche"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:padding="10dp"
-            android:text="Scheduled Time"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/clock"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/spinner_hours"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/hour"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Hour"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/text_sche"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/spinner_hours"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/text_sche"
-            app:layout_constraintEnd_toStartOf="@+id/spinner_min"
-            app:layout_constraintStart_toEndOf="@+id/text_sche"
+            app:layout_constraintStart_toEndOf="@+id/hour"
             app:layout_constraintTop_toTopOf="@+id/text_sche"
-            app:layout_constraintVertical_bias="0.538" />
+            app:layout_constraintVertical_bias="0.555" />
+
+        <TextView
+            android:id="@+id/minute"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="10dp"
+            android:text="Minute"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/spinner_hours"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/spinner_min"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/spinner_hours"
             android:layout_alignTop="@+id/spinner_hours"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
             app:layout_constraintBottom_toBottomOf="@+id/text_sche"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.095"
-            app:layout_constraintStart_toEndOf="@+id/spinner_hours"
+            app:layout_constraintStart_toEndOf="@+id/minute"
             app:layout_constraintTop_toTopOf="@+id/text_sche"
-            app:layout_constraintVertical_bias="0.515" />
+            app:layout_constraintVertical_bias="0.555" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_background">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/weather"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/text_Wea"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140dp"
             android:padding="10dp"
             android:text="Weather"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Switch
             android:id="@+id/btn_Wea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_Wea"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
@@ -185,15 +183,25 @@
         android:background="@drawable/edit_background">
 
         <TextView
+            android:id="@+id/textView6"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/news"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/text_news"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="155dp"
             android:padding="10dp"
             android:text="News"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Switch
@@ -202,10 +210,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_news"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
@@ -218,27 +224,35 @@
         android:background="@drawable/edit_background">
 
         <TextView
+            android:id="@+id/textView7"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/covid"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/text_cov"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="95dp"
             android:padding="10dp"
-            android:text="Covid-19 statistics"
+            android:text="Covid-19"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Switch
             android:id="@+id/btn_cov"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_cov"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
@@ -250,18 +264,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:padding="5dp"
         android:text="Finish"
-        android:textColor="#90EE90"
         android:textSize="15sp" />
+
     <Button
         android:id="@+id/text_del"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:padding="5dp"
         android:text="Delete"
-        android:textColor="#FF6347"
         android:textSize="15sp" />
 
 </LinearLayout>

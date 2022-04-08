@@ -1,55 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="Homepage"
-    tools:context=".HomepageActivity">
+    android:orientation="vertical"
+    tools:context=".ReceiverActivity">
 
 
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/edit_background"
         android:gravity="center_horizontal"
         android:padding="20dp"
         android:text="Homepage"
         android:textSize="30sp"
-        android:background="@drawable/edit_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:textStyle="bold"></TextView>
 
-    <TextView
-        android:id="@+id/text_con"
+    <ListView
+        android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
-        android:text="@string/contact"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_con" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn_con"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="196dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btn_background"
-        android:foreground="@drawable/ic_icon_add"
-        android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:foreground="@drawable/ic_icon_add"></Button>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

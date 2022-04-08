@@ -69,10 +69,13 @@ public class InfoActivity extends AppCompatActivity {
 
         });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
-        loadPreferences(); }
+        loadPreferences();
+    }
+
     public void SendData(final String account, final String password, final String signature) {
         new Thread(new Runnable() {
             @Override
@@ -128,18 +131,18 @@ public class InfoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    public void savePreferences(String a,String p,String s) {
+
+    public void savePreferences(String a, String p, String s) {
         SharedPreferences pref = getSharedPreferences("DailyMessage", MODE_PRIVATE);
         pref.edit().putString("account", a).commit();
         pref.edit().putString("password", p).commit();
         pref.edit().putString("signature", s).commit();
     }
+
     public void loadPreferences() {
         SharedPreferences pref = getSharedPreferences("DailyMessage", MODE_PRIVATE);
-        account.setText(pref.getString("account", "0"));
-        password.setText(pref.getString("password", "0"));
-        signature.setText(pref.getString("password", "0"));
+        account.setText(pref.getString("account", ""));
+        password.setText(pref.getString("password", ""));
+        signature.setText(pref.getString("signature", ""));
     }
-
-
 }
