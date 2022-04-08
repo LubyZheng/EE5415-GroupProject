@@ -87,7 +87,7 @@ public class MessageActivity extends AppCompatActivity {
             String r = jsonObject.getString("success");
             if (r.equals("true")) {
                 Intent intent = new Intent(getApplicationContext(),
-                        VersionActivity.class);
+                        ReceiverActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(MessageActivity.this,

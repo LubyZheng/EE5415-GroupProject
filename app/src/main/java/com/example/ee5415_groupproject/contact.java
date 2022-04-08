@@ -27,7 +27,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class contact extends AppCompatActivity {
-    EditText address, name;
+    EditText address, name,hours,min;
     String[] countryArray, provinceArray, cityArray, hourArray, minArray;
     Spinner spinnerCountry, spinnerProvince, spinnerCity, spinnerHour, spinnerMin;
     String country, province, city;
@@ -41,6 +41,10 @@ public class contact extends AppCompatActivity {
         String Address = address.getText().toString();
         name = (EditText) findViewById(R.id.edit_name);
         String Name = name.getText().toString();
+        hours = (EditText) findViewById(R.id.spinner_hours);
+        String hour =hours.getText().toString();
+        min = (EditText) findViewById(R.id.spinner_min);
+        String Min = min.getText().toString();
         //location
         countryArray = getResources().getStringArray(R.array.Location_countries);
         provinceArray = getResources().getStringArray(R.array.Location_provinces);
@@ -81,18 +85,18 @@ public class contact extends AppCompatActivity {
                     public void onNothingSelected(AdapterView<?> arg0) {
                     }
                 });
-        spinnerCity.setOnItemSelectedListener(
-                new Spinner.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-                        city = cityArray[arg2];
-                    }
+        //spinnerCity.setOnItemSelectedListener(
+                //new Spinner.OnItemSelectedListener() {
+                    //@Override
+                    //public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               //int arg2, long arg3) {
+                        //city = cityArray[arg2];
+                    //}
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> arg0) {
-                    }
-                });
+                   // @Override
+                   // public void onNothingSelected(AdapterView<?> arg0) {
+                    //}
+               // });
         //Schedule Time
 
 
@@ -172,8 +176,8 @@ public class contact extends AppCompatActivity {
                         }
                         JSONObject json2 = new JSONObject();
                         try {
-                            json2.put("hour", "19");
-                            json2.put("minute", "00");
+                            json2.put("hour", hour);
+                            json2.put("minute", Min);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -237,7 +241,7 @@ public class contact extends AppCompatActivity {
             String Name = name.getText().toString();
             if (r.equals("true")) {
                 Intent intent = new Intent(getApplicationContext(),
-                        MessageActivity.class);
+                        ReceiverActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("receiverName", Name);
                 bundle.putString("emailAddress", Address);

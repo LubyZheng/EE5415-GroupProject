@@ -119,7 +119,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <Spinner
+        <EditText
             android:id="@+id/spinner_hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
             app:layout_constraintTop_toTopOf="@+id/text_sche"
             app:layout_constraintVertical_bias="0.538" />
 
-        <Spinner
+        <EditText
             android:id="@+id/spinner_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

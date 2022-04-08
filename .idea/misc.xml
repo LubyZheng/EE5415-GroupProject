@@ -26,11 +26,13 @@
         <entry key="..\:/AndroidStudioProjects/EE5415/app/src/main/res/menu/menu_options.xml" value="0.18697916666666667" />
         <entry key="..\:/AndroidStudioProjects/EE5415/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Code/AndroidStudioProjects/EE5415GroupProject/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="app/src/main/res/layout/activity_contact.xml" value="0.23125" />
         <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.3115371704101563" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23125" />
         <entry key="app/src/main/res/layout/activity_version.xml" value="0.20435282389322917" />
         <entry key="app/src/main/res/layout/contact_info.xml" value="0.28036804199218746" />
         <entry key="app/src/main/res/layout/homepage.xml" value="0.30000864664713545" />
+        <entry key="app/src/main/res/layout/list_items.xml" value="0.23125" />
         <entry key="app/src/main/res/layout/spinner_item.xml" value="0.12276255289713542" />
       </map>
     </option>
