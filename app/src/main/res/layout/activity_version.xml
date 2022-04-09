@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:gravity="center_horizontal"
-        android:text="Current Version: 1.0"
+        android:text="@string/version"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

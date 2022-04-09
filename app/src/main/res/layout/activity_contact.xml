@@ -58,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:spinnerMode="dialog"
             app:layout_constraintStart_toEndOf="@+id/Location"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
+            android:spinnerMode="dialog"
             app:layout_constraintStart_toEndOf="@+id/spinner_province"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -99,40 +101,38 @@
             app:layout_constraintStart_toEndOf="@+id/text_sche"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <Spinner
             android:id="@+id/spinner_hours"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_sche"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:spinnerMode="dialog"
             app:layout_constraintStart_toEndOf="@+id/hour"
-            app:layout_constraintTop_toTopOf="@+id/text_sche"
-            app:layout_constraintVertical_bias="0.555" />
+            app:layout_constraintTop_toTopOf="@+id/text_sche" />
 
         <TextView
             android:id="@+id/minute"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
-            android:layout_marginStart="42dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:text="Minute"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/spinner_hours"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <Spinner
             android:id="@+id/spinner_min"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/spinner_hours"
             android:layout_alignTop="@+id/spinner_hours"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_sche"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="4dp"
+            android:spinnerMode="dialog"
             app:layout_constraintStart_toEndOf="@+id/minute"
-            app:layout_constraintTop_toTopOf="@+id/text_sche"
-            app:layout_constraintVertical_bias="0.555" />
+            app:layout_constraintTop_toTopOf="@+id/text_sche" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

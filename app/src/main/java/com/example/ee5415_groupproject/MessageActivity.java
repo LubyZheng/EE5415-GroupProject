@@ -40,6 +40,9 @@ public class MessageActivity extends AppCompatActivity {
                 Bundle bundle = getIntent().getExtras();
                 String name = bundle.getString("receiverName");
                 String address = bundle.getString("emailAddress");
+                System.out.println(content);
+                System.out.println(name);
+                System.out.println(address);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -87,7 +90,7 @@ public class MessageActivity extends AppCompatActivity {
             String r = jsonObject.getString("success");
             if (r.equals("true")) {
                 Intent intent = new Intent(getApplicationContext(),
-                        ReceiverActivity.class);
+                        HomepageActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(MessageActivity.this,

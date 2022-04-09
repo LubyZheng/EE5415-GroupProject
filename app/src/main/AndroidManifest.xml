@@ -14,12 +14,6 @@
         android:theme="@style/Theme.EE5415GroupProject"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MyAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".ReceiverActivity"
-            android:exported="false" />
-        <activity
             android:name=".HomepageActivity"
             android:exported="false" />
         <activity
