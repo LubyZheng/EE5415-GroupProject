@@ -22,6 +22,7 @@
         android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="edit_text"
         android:gravity="center_horizontal"
         android:hint="@string/name"
         android:textSize="20sp" />
@@ -30,6 +31,7 @@
         android:id="@+id/edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="edit_text"
         android:gravity="center_horizontal"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
